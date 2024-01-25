@@ -4,7 +4,7 @@ const deviceRouter = require('./deviceRouter')
 
 
 
-router.use('/device', deviceRouter)
+router.use('/user', deviceRouter)
 
 
 module.exports = router
