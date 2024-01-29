@@ -8,6 +8,9 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 // router.get('/',checkRole('ADMIN'), deviceController.create)
 router.get('/getSchet/:id', deviceController.getSchet)
+router.get('/getSchetByKodGlav/:id', deviceController.getSchetByKodGlav)
+router.post('/getSchetByKodChildr', deviceController.getSchetByKodChildr)
+
 router.get('/getUser/:login', deviceController.getUser)
 router.post('/login', deviceController.login)
 

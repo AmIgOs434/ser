@@ -3,7 +3,7 @@ const path = require('path');
 const { User, Scheta } = require('../models/models')
 const ApiError = require('../error/ApiError');
 const jwt = require('jsonwebtoken')
-
+const { Op } = require('sequelize');
 const generateJwt = (id, email, login,phone,name) => {
   return jwt.sign(
       {id, email, login,phone,name},
@@ -33,6 +33,50 @@ async getSchet(req, res) {
   const schet = await Scheta.findOne(
       {
           where: {Код:id}
+      },
+  )
+  return res.json(schet)
+} 
+
+
+async getSchetByKodGlav(req, res) {
+  const {id} = req.params
+  const schet = await Scheta.findAll(
+      {
+          where: {Владелец:id}
+      },
+  )
+  return res.json(schet)
+} 
+
+
+// async getSchetByKodChildr(req, res) {
+
+//   const {identificator} = req.body
+//   const schet = await Scheta.findAll(
+//       {
+//           where: {'Доступ на чтение':identificator},
+//           // include: [{
+//           //   require:true 
+//           // }]
+//       },
+//   )
+//   return res.json(schet)
+// } 
+
+async getSchetByKodChildr(req, res) {
+
+  const {identificator} = req.body
+  const schet = await Scheta.findAll(
+      {
+        where: {
+          'Доступ на чтение': {
+            [Op.or]: [
+              { [Op.iLike]: `%${identificator}%` },
+            ],
+          },
+        },
+         
       },
   )
   return res.json(schet)
