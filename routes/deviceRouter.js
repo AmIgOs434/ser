@@ -7,11 +7,20 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 
 // router.get('/',checkRole('ADMIN'), deviceController.create)
-router.get('/getSchet/:id', deviceController.getSchet)
-router.get('/getSchetByKodGlav/:id', deviceController.getSchetByKodGlav)
-router.post('/getSchetByKodChildr', deviceController.getSchetByKodChildr)
 
-router.get('/getUser/:login', deviceController.getUser)
+router.get('/getVideo', deviceController.getVideo)
+router.post('/createVideo', deviceController.createVideo)
+router.post('/createUser', deviceController.registration_0)
+router.post('/login', deviceController.login)
+
+router.post('/createSessia', deviceController.createSessia)
+router.post('/createPortfolio', deviceController.createPortfolio)
+router.post('/createPortfolioImg', deviceController.createPortfolioImg)
+router.post('/createSessiaTags', deviceController.createSessiaTags)
+
+
+router.get('/getSessia/:id', deviceController.getSessia)
+router.get('/getUser/:id', deviceController.getUser)
 router.post('/login', deviceController.login)
 
 module.exports = router
