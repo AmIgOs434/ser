@@ -8,19 +8,21 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 // router.get('/',checkRole('ADMIN'), deviceController.create)
 
-router.get('/getVideo', deviceController.getVideo)
-router.post('/createVideo', deviceController.createVideo)
-router.post('/createUser', deviceController.registration_0)
-router.post('/login', deviceController.login)
 
-router.post('/createSessia', deviceController.createSessia)
-router.post('/createPortfolio', deviceController.createPortfolio)
-router.post('/createPortfolioImg', deviceController.createPortfolioImg)
-router.post('/createSessiaTags', deviceController.createSessiaTags)
+router.post('/auth', deviceController.auth)
+router.post('/reg', deviceController.reg)
+router.post('/getSchetchiki', deviceController.getSchetchiki)
+
+router.post('/getSchetchik_data', deviceController.getSchetchik_data)
+router.post('/getSchetchik_data_one', deviceController.getSchetchik_data_one)
 
 
-router.get('/getSessia/:id', deviceController.getSessia)
-router.get('/getUser/:id', deviceController.getUser)
-router.post('/login', deviceController.login)
+router.post('/createSchetchiki', deviceController.createSchetchiki)
+
+
+
+
+
+router.post('/createSchetchiki_by_data', deviceController.createSchetchiki_by_data)
 
 module.exports = router
